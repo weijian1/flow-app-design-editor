@@ -1,0 +1,110 @@
+<template>
+    <div :id="id" class="flow-editor">
+        <div class="design-editor">
+            <editor-wrapper v-model="value" :header="appHeader" :id="id"></editor-wrapper>
+        </div>
+    </div>
+</template>
+
+<script>
+import EditorMinxin  from './Mixins/Editor'
+import EditorEvent from './Utils/EditorEvent'
+import EditorWrapper from './EditorWrapper.vue'
+export default {
+    name: 'flow-app-design-editor',
+    components: {
+        EditorWrapper
+    },
+    mixins: [ EditorMinxin ],
+    props: {
+        id: {
+            type: String,
+            required: true
+        },
+        appHeader: {
+            type: Object, 
+            required: true
+        },
+        value: {
+            type: Object,
+            required: true
+        }
+    },
+    mounted() {
+
+    },
+    data() {
+        return {
+            editorData: {
+                select: {
+                    elementIndex: []
+                },
+                currentAction: {
+                    multiSelect: false
+                }
+            }
+        }
+    },
+    methods: {
+        // api
+        insertElement(element, index = null) {
+            if (index == null) {
+                this.value.elements.push(element);
+            } else {
+                this.value.elements.splice(index, 0, element);
+            }
+        },
+        unselectElemnt() {
+            let selectElementIndex = this.editorData.select.elementIndex;
+
+            for (let i = 0; i < selectElementIndex.length; i++) {
+                this.bodyChildren.$refs[`component_${selectElementIndex[i]}`][0].unselect();
+            }
+
+            this.editorData.select.elementIndex = [];
+        },
+
+        // emit
+        onElementDblClick(elementIndex) {
+            this.$emit('elementdblclick', this.editorData.select);
+        },
+        onElementChange(elementIndex) {
+            if (this.editorData.currentAction.multiSelect == false) {
+                this.unselectElemnt();
+            }
+            this.elementChange(elementIndex);
+            this.$emit('elementchange', this.editorData.select);
+        },
+        onDeleteElement(elementIndex) {
+            let editorEvent = new EditorEvent('deleteelement');
+            editorEvent.setElementIndex(elementIndex);
+            this.$emit('elementdelete', editorEvent);
+            
+            if (editorEvent.cancelable == false) {
+                this.unselectElemnt();
+                this.value.elements.splice(elementIndex, 1);
+            }
+        },
+
+        // private method
+        elementChange(elementIndex) {
+            this.editorData.select.elementIndex.push(elementIndex);
+        },
+
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.flow-editor {
+    background: #f5f5f4;
+    .list-sortable {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+}
+
+</style>
+
+
