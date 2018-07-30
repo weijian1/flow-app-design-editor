@@ -18,6 +18,10 @@ export default {
         sortableId: {
             type: String,
             required: true
+        },
+        elementAppendTo: {
+            type: String,
+            default: 'parent'
         }
     },
     mounted() {
@@ -27,6 +31,7 @@ export default {
             helper: "clone",
             revert: "invalid",
             containment: "document",
+            appendTo: that.elementAppendTo,
             opacity: .7,
             start() {
                 
@@ -51,9 +56,15 @@ export default {
 
 <style lang="scss" scoped>
 .draggable-wrapper {
-    background: #f5f5f4;
+    background: #F2F2F6;
     .list-draggable {
+        width: 100%;
+        height: 100%;
         list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
     }
 }
 </style>

@@ -48,11 +48,16 @@ export default {
     methods: {
         // api
         insertElement(element, index = null) {
+            this.unselectElemnt();
             if (index == null) {
                 this.value.elements.push(element);
             } else {
                 this.value.elements.splice(index, 0, element);
             }
+
+            this.$nextTick(() => {
+                this.bodyChildren.$refs[`component_${index}`][0].$children[0].elementClick();
+            });
         },
         unselectElemnt() {
             let selectElementIndex = this.editorData.select.elementIndex;
@@ -97,7 +102,7 @@ export default {
 
 <style lang="scss" scoped>
 .flow-editor {
-    background: #f5f5f4;
+    background: #F2F2F6;
     .list-sortable {
         margin: 0;
         padding: 0;

@@ -85,7 +85,7 @@ export default {
         right: 0;
         top: 0;
         margin: auto;
-        margin-top: 150px;
+        margin-top: 103px;
         margin-bottom: 75px;
         border: 1px dashed #c7c6c6;
         padding: 12px;

@@ -49,6 +49,7 @@ export default {
       },
       deleteElement(e) {
           e.preventDefault();
+          e.stopPropagation();
           this.$emit('elementdelete');
       }
     }
