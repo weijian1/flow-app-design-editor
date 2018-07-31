@@ -63,9 +63,9 @@ export default {
 
                 },
                 drag() {
-                    
+
                 },
-                stop(event, ui) {
+                beforeStop(event, ui) {
                     //  通过移动方式
                     if (! ui.item.context.classList.contains('ui-draggable')) {
                         let newElementIndex = $(ui.item[0]).index();
@@ -78,16 +78,15 @@ export default {
                         elements[oldElementIndex] = temp;
 
                         that.value.elements = elements;
+                    } else {
+                        let index = $(ui.helper).index();
+                        $(ui.helper).remove();
+                        that.editorParent.onElementBeforeDragStop({
+                            event,
+                            ui,
+                            index
+                        });
                     }
-                },
-                beforeStop(event, ui) {
-                    let index = $(ui.helper).index();
-                    $(ui.helper).remove();
-                    that.editorParent.onElementBeforeDragStop({
-                        event,
-                        ui,
-                        index
-                    });
                 }
             });
         });
