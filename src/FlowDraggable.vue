@@ -38,16 +38,6 @@ export default {
             },
             drag() {
 
-            },
-            stop(event, ui) {
-
-                let index = $(ui.helper).index();
-                $(ui.helper).remove();
-                that.$emit('dragstop', {
-                    event,
-                    ui,
-                    index
-                });
             }
         });
     }

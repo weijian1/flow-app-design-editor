@@ -23,6 +23,8 @@ import ElementSearch from './Elements/Search.vue'
 import ElementBanner from './Elements/Banner.vue'
 import ElementCommodity from './Elements/Commodity.vue'
 
+import EditorMinxin  from './Mixins/Editor'
+
 export default {
     components: {
         ElementTitle,
@@ -32,6 +34,7 @@ export default {
         ElementBanner,
         ElementCommodity
     },
+    mixins: [ EditorMinxin ],
     data() {
         return {
             selectElementIndex: null,
@@ -76,18 +79,22 @@ export default {
 
                         that.value.elements = elements;
                     }
-
-                    // console.log(newElementIndex);
-                    // console.log(ui);
+                },
+                beforeStop(event, ui) {
+                    let index = $(ui.helper).index();
+                    $(ui.helper).remove();
+                    that.editorParent.onElementBeforeDragStop({
+                        event,
+                        ui,
+                        index
+                    });
                 }
             });
         });
     },
     methods: {
         unselectElemnt(e) {
-            // if (e.target == this.$el) {
-            //     this.editorParent.unselectElemnt();
-            // }
+            
         },
     },
     watch: {

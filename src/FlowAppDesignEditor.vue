@@ -70,6 +70,9 @@ export default {
         },
 
         // emit
+        onElementBeforeDragStop(event) {
+            this.$emit('elementbeforeinsert', event);
+        },
         onElementDblClick(elementIndex) {
             this.$emit('elementdblclick', this.editorData.select);
         },
