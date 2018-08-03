@@ -32,5 +32,6 @@ export default {
 .content-text {
     margin: 0;
     min-height: 30px;
+    word-break: break-all;
 }
 </style>
