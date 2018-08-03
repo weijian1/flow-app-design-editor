@@ -37,7 +37,7 @@ export default {
                 },
                 width: 375,
                 height: 647,
-                paddingSize: 12,
+                paddingSize: 0,
                 borderSize: 1
             },
             eventData: {
@@ -88,7 +88,6 @@ export default {
         margin-top: 103px;
         margin-bottom: 75px;
         border: 1px dashed #c7c6c6;
-        padding: 12px;
         padding-bottom: 0;
         background: white;
         box-sizing: border-box;
