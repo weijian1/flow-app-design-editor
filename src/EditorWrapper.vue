@@ -87,7 +87,6 @@ export default {
         margin: auto;
         margin-top: 103px;
         margin-bottom: 75px;
-        border: 1px dashed #c7c6c6;
         padding-bottom: 0;
         background: white;
         box-sizing: border-box;

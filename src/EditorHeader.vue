@@ -1,5 +1,6 @@
 <template>
   <div class="editor-header">
+      <StatusBar></StatusBar>
       <NavBar :title="value.navigationBarTitle" 
               :bgColor="value.navigationBarBackgroundColor"
               :textColor="value.navigationBarTextStyle"
@@ -8,10 +9,12 @@
 </template>
 
 <script>
+import StatusBar from './Components/StatusBar.vue'
 import NavBar from './Components/NavBar.vue'
 export default {
   components: {
-      NavBar
+      NavBar,
+      StatusBar
   },
   props: {
       value: {
