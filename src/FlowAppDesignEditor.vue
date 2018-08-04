@@ -106,11 +106,6 @@ export default {
 <style lang="scss" scoped>
 .flow-editor {
     background: #F2F2F6;
-    .list-sortable {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-    }
 }
 
 </style>

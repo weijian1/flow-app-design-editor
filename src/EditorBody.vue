@@ -159,7 +159,7 @@ export default {
             margin: 0;
             padding: 0;
             list-style-type: none;
-            height: 100%;
+            min-height: 100%;
         }
 
         .sortable-wrapper::-webkit-scrollbar {
