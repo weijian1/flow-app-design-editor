@@ -119,14 +119,7 @@ export default {
                 cssProperty.height = minHeight;
             }
             cssProperty.height = pageProperty.height;
-
-            if (pageProperty.type == 1) {
-                cssProperty.backgroundColor = pageProperty.backgroundColor;
-            } else if (pageProperty.type == 2) {
-                cssProperty.backgroundImage = pageProperty.backgroundImage;
-                cssProperty.backgroundRepeat = 'no-repeat';
-                cssProperty.backgroundSize = 'cover';
-            }
+            cssProperty.backgroundColor = pageProperty.backgroundColor;
 
             return cssProperty;
         }

@@ -1,9 +1,9 @@
 <template>
     <li>
         <element-border element-title="商品模块" :selected="selected">
-            <template v-if="value.commodity.property">
+            <div class="element-inner" v-if="value.commodity.property">
                 <img class="content-img" :src="imgPath" />
-            </template>
+            </div>
         </element-border>
     </li>
 </template>
@@ -11,6 +11,7 @@
 <script>
 import ElementBorder from './../ElementBorder.vue'
 import MixinElement from './../Mixins/Element'
+import Obj2CSS from './../Filters/Obj2CSS'
 export default {
     mixins: [ MixinElement ],
     props: {
@@ -29,6 +30,9 @@ export default {
                 return `static/elements/commodity/element-style-${this.value.commodity.property.styleNo}.png`;
             }
         }
+    },
+    filters: {
+        Obj2CSS
     }
 }
 </script>
