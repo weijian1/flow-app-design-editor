@@ -3,7 +3,7 @@
                             @click="unselectElemnt"
                             tabindex="-1" v-cloak>
         <div :id="id" class="sortable-wrapper">
-            <ul class="list-sortable">
+            <ul class="list-sortable" @click="sortableClick">
                 <template v-for="(element, index) in value.elements">
                     <component :is="`element-${element.elementable_type}`" v-model="value.elements[index]" :ref="`component_${index}`" :index="index" :key="index"></component>
                 </template>
@@ -95,6 +95,13 @@ export default {
         unselectElemnt(e) {
             
         },
+        sortableClick(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.target.classList.contains('list-sortable')) {
+                this.editorParent.onElementUnselect();
+            }
+        }
     },
     watch: {
     },

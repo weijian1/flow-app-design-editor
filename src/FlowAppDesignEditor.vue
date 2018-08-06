@@ -1,6 +1,6 @@
 <template>
     <div :id="id" class="flow-editor">
-        <div class="design-editor">
+        <div class="design-editor" @click="designEditorClick">
             <editor-wrapper v-model="value" :header="appHeader" :id="id"></editor-wrapper>
         </div>
     </div>
@@ -69,7 +69,16 @@ export default {
             this.editorData.select.elementIndex = [];
         },
 
+        // private
+        designEditorClick(e) {
+            this.onElementUnselect();
+        },
+
         // emit
+        onElementUnselect() {
+            this.unselectElemnt();
+            this.$emit('elementchange', this.editorData.select);
+        },
         onElementBeforeDragStop(event) {
             this.$emit('elementbeforeinsert', event);
         },
@@ -106,6 +115,10 @@ export default {
 <style lang="scss" scoped>
 .flow-editor {
     background: #F2F2F6;
+    .design-editor {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 </style>
