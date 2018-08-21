@@ -22,6 +22,8 @@ import ElementBlank from './Elements/Blank.vue'
 import ElementSearch from './Elements/Search.vue'
 import ElementBanner from './Elements/Banner.vue'
 import ElementCommodity from './Elements/Commodity.vue'
+import ElementImage from './Elements/Image.vue'
+import ElementCoupon from './Elements/Coupon.vue'
 
 import EditorMinxin  from './Mixins/Editor'
 
@@ -32,7 +34,9 @@ export default {
         ElementBlank,
         ElementSearch,
         ElementBanner,
-        ElementCommodity
+        ElementCommodity,
+        ElementImage,
+        ElementCoupon
     },
     mixins: [ EditorMinxin ],
     data() {
