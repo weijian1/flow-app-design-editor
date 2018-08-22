@@ -76,12 +76,8 @@ export default {
                         let elementVm = $(ui.item.context).children('.element-box')[0].__vue__.$parent;
                         let oldElementIndex = elementVm.index;
 
-                        let elements = JSON.parse(JSON.stringify(that.value.elements));
-                        let temp = elements[newElementIndex];
-                        elements[newElementIndex] = elements[oldElementIndex];
-                        elements[oldElementIndex] = temp;
-
-                        that.value.elements = elements;
+                        let tempElement = that.value.elements.splice(oldElementIndex, 1);
+                        that.value.elements.splice(newElementIndex, 0, tempElement[0]);
                     } else {
                         let index = $(ui.helper).index();
                         $(ui.helper).remove();
