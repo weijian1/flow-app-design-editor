@@ -99,6 +99,7 @@ export default {
             
             if (editorEvent.cancelable == false) {
                 this.unselectElemnt();
+                this.$emit('elementchange', this.editorData.select);
                 this.value.elements.splice(elementIndex, 1);
             }
         },
